@@ -1,0 +1,21 @@
+{
+  "name": "roboflow",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "test:f1": "jest getBlockDescription.test.js", 
+    "test:f2": "jest getInputPropertiesOfKind.test.js"
+  },
+  "keywords": [],
+  "author": "CHANRITHISAK PHOK",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "axios": "^1.7.7",
+    "nodemon": "^3.1.7"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
