@@ -55,7 +55,7 @@ async function getInputPropertiesOfKind(blockType, kind) {
         const properties = block.block_schema.properties || {};
 
         // Collect property names whose 'kind' array contains the specified kind (e.g., "string")
-        const matchingProperties = [];
+        const matchingProperties = new Set();
         for (let propName in properties) {
             const prop = properties[propName];
             if (prop.anyOf) {
@@ -64,15 +64,15 @@ async function getInputPropertiesOfKind(blockType, kind) {
                     if (option.kind) {
                         const kinds = option.kind.map(k => k.name);
                         if (kinds.includes(kind)) {
-                            matchingProperties.push(propName);
+                            matchingProperties.add(propName);
                         }
                     }
                 }
             }
         }
 
-        // Return the array of matching property names
-        return matchingProperties.length ? matchingProperties : "No matching properties found";
+        // Return the sorted array of unique matching property names
+        return matchingProperties.size ? Array.from(matchingProperties).sort() : "No matching properties found";
 
     } catch (error) {
         console.error("Error processing input properties:", error);
@@ -80,7 +80,7 @@ async function getInputPropertiesOfKind(blockType, kind) {
     }
 }
 
-// // Example usage for block description
+// //Example usage for block description
 // getBlockDescription("roboflow_core/roboflow_object_detection_model@v1")
 //     .then(description => console.log(description))
 //     .catch(error => console.error(error));
