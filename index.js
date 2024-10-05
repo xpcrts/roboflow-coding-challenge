@@ -58,7 +58,12 @@ async function getInputPropertiesOfKind(blockType, kind) {
         const matchingProperties = new Set();
         for (let propName in properties) {
             const prop = properties[propName];
-            if (prop.anyOf) {
+            if (prop.kind) {
+                // Directly nested kind object
+                if (prop.kind.some(k => k.name === kind)) {
+                    matchingProperties.add(propName);
+                }
+            } else if (prop.anyOf) {
                 // Check if the kind exists inside anyOf and matches the input kind
                 for (let option of prop.anyOf) {
                     if (option.kind) {
