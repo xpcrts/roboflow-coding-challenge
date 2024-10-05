@@ -80,7 +80,7 @@ async function getInputPropertiesOfKind(blockType, kind) {
     }
 }
 
-// Example usage for block description
+// // Example usage for block description
 // getBlockDescription("roboflow_core/roboflow_object_detection_model@v1")
 //     .then(description => console.log(description))
 //     .catch(error => console.error(error));
@@ -97,6 +97,5 @@ async function getInputPropertiesOfKind(blockType, kind) {
 // getInputPropertiesOfKind("roboflow_core/dynamic_crop@v1", "object_detection_prediction")
 //     .then(properties => console.log(properties))
 //     .catch(error => console.error(error));
-
 
 module.exports = { getBlockDescription, getInputPropertiesOfKind }; 

@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "dev": "nodemon index.js",
     "test:f1": "jest getBlockDescription.test.js", 
     "test:f2": "jest getInputPropertiesOfKind.test.js"
